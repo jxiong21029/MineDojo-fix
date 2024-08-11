@@ -284,12 +284,12 @@ class ExtraSpawnMetaTaskBase(MetaTaskBase):
             )
             assert len(extra_spawn_range_high) == 3 and len(extra_spawn_range_low) == 3
             low = np.repeat(
-                np.array(extra_spawn_range_low)[np.newaxis, ...],
+                np.array(extra_spawn_range_low, dtype=np.float32)[np.newaxis, ...],
                 len(extra_spawn_rate),
                 axis=0,
             )
             high = np.repeat(
-                np.array(extra_spawn_range_high)[np.newaxis, ...],
+                np.array(extra_spawn_range_high, dtype=np.float32)[np.newaxis, ...],
                 len(extra_spawn_rate),
                 axis=0,
             )
