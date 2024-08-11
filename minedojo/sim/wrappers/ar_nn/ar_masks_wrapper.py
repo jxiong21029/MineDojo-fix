@@ -15,10 +15,10 @@ class ARMasksWrapper(gym.ObservationWrapper):
         env: Union[MineDojoSim, gym.Wrapper],
         action_categories_and_num_args: Optional[dict[str, int]] = None,
     ):
-        assert "inventory" in env.observation_space.keys()
-        assert "nearby_tools" in env.observation_space.keys()
-        assert "table" in env.observation_space["nearby_tools"].keys()
-        assert "furnace" in env.observation_space["nearby_tools"].keys()
+        assert "inventory" in env.observation_space.spaces
+        assert "nearby_tools" in env.observation_space.spaces
+        assert "table" in env.observation_space["nearby_tools"].spaces
+        assert "furnace" in env.observation_space["nearby_tools"].spaces
         assert isinstance(
             env.action_space, spaces.MultiDiscrete
         ), "please use this wrapper with `NNActionSpaceWrapper!`"
@@ -51,7 +51,7 @@ class ARMasksWrapper(gym.ObservationWrapper):
             }
         )
         # remove `full_stats`
-        if "full_stats" in obs_space.keys():
+        if "full_stats" in obs_space.spaces:
             del obs_space["full_stats"]
         self.observation_space = obs_space
         # a_arg_mask can be determined now and will not change
