@@ -22,12 +22,12 @@ class NNActionSpaceWrapper(gym.Wrapper):
         strict_check: bool = True,
     ):
         assert (
-            "equip" in env.action_space.keys()
-            and "place" in env.action_space.keys()
-            and "swap_slot" not in env.action_space.keys()
+            "equip" in env.action_space.spaces
+            and "place" in env.action_space.spaces
+            and "swap_slot" not in env.action_space.spaces
         ), "please use this wrapper with event_level_control = True"
         assert (
-            "inventory" in env.observation_space.keys()
+            "inventory" in env.observation_space.spaces
         ), f"missing inventory from obs space"
         super().__init__(env=env)
 
